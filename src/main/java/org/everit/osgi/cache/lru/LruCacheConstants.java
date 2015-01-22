@@ -26,7 +26,7 @@ public final class LruCacheConstants {
 
     public static final String PROP_CAPACITY = "capacity";
 
-    public static final String PROP_CACHE_NAME = "cacheName";
+    public static final String PROP_CACHE_NAME = "cache.name";
 
     public static final String DEFAULT_CACHE_NAME = "lru";
 

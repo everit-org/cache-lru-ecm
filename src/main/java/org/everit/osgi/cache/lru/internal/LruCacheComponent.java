@@ -38,7 +38,8 @@ import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 @Properties({
         @Property(name = Constants.SERVICE_DESCRIPTION, propertyPrivate = false,
                 value = LruCacheConstants.DEFAULT_SERVICE_DESCRIPTION),
-        @Property(name = LruCacheConstants.PROP_CAPACITY, longValue = LruCacheConstants.DEFAULT_CAPACITY)
+        @Property(name = LruCacheConstants.PROP_CAPACITY, longValue = LruCacheConstants.DEFAULT_CAPACITY),
+        @Property(name = LruCacheConstants.PROP_CACHE_NAME, value = LruCacheConstants.DEFAULT_CACHE_NAME)
 })
 public class LruCacheComponent<K, V> {
 
@@ -48,7 +49,6 @@ public class LruCacheComponent<K, V> {
     public void activate(final BundleContext bundleContext, final Map<String, Object> componentPorperties) {
         Hashtable<String, Object> properties = new Hashtable<String, Object>();
         properties.putAll(componentPorperties);
-        properties.put(LruCacheConstants.PROP_CACHE_NAME, LruCacheConstants.DEFAULT_CACHE_NAME);
 
         long capacity = (Long) componentPorperties.get(LruCacheConstants.PROP_CAPACITY);
         ConcurrentMap<K, V> cache = new ConcurrentLinkedHashMap.Builder<K, V>()
