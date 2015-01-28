@@ -26,9 +26,10 @@ public final class LruCacheConstants {
 
     public static final String PROP_CAPACITY = "capacity";
 
-    public static final String PROP_CACHE_NAME = "cache.name";
+    public static final String PROP_CACHE_DRIVER_NAME = "cache.driver.name";
 
-    public static final String DEFAULT_CACHE_NAME = "lru";
+    public static final String DEFAULT_CACHE_DRIVER_NAME =
+            "com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru";
 
     private LruCacheConstants() {
     }

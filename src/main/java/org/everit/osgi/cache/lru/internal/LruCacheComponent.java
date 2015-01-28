@@ -39,7 +39,8 @@ import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
         @Property(name = Constants.SERVICE_DESCRIPTION, propertyPrivate = false,
                 value = LruCacheConstants.DEFAULT_SERVICE_DESCRIPTION),
         @Property(name = LruCacheConstants.PROP_CAPACITY, longValue = LruCacheConstants.DEFAULT_CAPACITY),
-        @Property(name = LruCacheConstants.PROP_CACHE_NAME, value = LruCacheConstants.DEFAULT_CACHE_NAME)
+        @Property(name = LruCacheConstants.PROP_CACHE_DRIVER_NAME, propertyPrivate = true,
+                value = LruCacheConstants.DEFAULT_CACHE_DRIVER_NAME)
 })
 public class LruCacheComponent<K, V> {
 
