@@ -29,6 +29,9 @@ public final class LruCacheConstants {
     public static final String CACHE_DRIVER_NAME =
             "com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru";
 
+    public static final String OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP =
+            "com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap";
+
     private LruCacheConstants() {
     }
 
