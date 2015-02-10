@@ -26,6 +26,7 @@ import org.apache.felix.scr.annotations.ConfigurationPolicy;
 import org.apache.felix.scr.annotations.Deactivate;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
+import org.everit.osgi.cache.CacheConstants;
 import org.everit.osgi.cache.lru.LruCacheConstants;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
@@ -38,9 +39,9 @@ import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 @Properties({
         @Property(name = Constants.SERVICE_DESCRIPTION, propertyPrivate = false,
                 value = LruCacheConstants.DEFAULT_SERVICE_DESCRIPTION),
-        @Property(name = LruCacheConstants.PROP_CAPACITY, longValue = LruCacheConstants.DEFAULT_CAPACITY),
-        @Property(name = LruCacheConstants.PROP_CACHE_DRIVER_NAME, propertyPrivate = true,
-                value = LruCacheConstants.DEFAULT_CACHE_DRIVER_NAME)
+        @Property(name = CacheConstants.PROP_CACHE_DRIVER_NAME, propertyPrivate = true,
+                value = LruCacheConstants.CACHE_DRIVER_NAME),
+        @Property(name = LruCacheConstants.PROP_CAPACITY, longValue = LruCacheConstants.DEFAULT_CAPACITY)
 })
 public class LruCacheComponent<K, V> {
 
@@ -57,7 +58,9 @@ public class LruCacheComponent<K, V> {
                 .build();
 
         cacheSR = bundleContext.registerService(
-                new String[] { ConcurrentMap.class.getName(), Map.class.getName() },
+                new String[] {
+                        CacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP,
+                        CacheConstants.OBJECT_CLASS_NAME_MAP },
                 cache, properties);
     }
 
