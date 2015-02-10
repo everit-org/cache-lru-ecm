@@ -29,7 +29,7 @@
 
   <groupId>org.everit.osgi</groupId>
   <artifactId>org.everit.osgi.cache.lru</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <packaging>bundle</packaging>
 
@@ -82,6 +82,9 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
+            <Import-Package>
+              *
+            </Import-Package>
             <Export-Package>
               org.everit.osgi.cache.lru;version=1.0.0
             </Export-Package>
