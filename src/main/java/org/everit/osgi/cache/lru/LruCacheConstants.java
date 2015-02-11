@@ -16,7 +16,7 @@
  */
 package org.everit.osgi.cache.lru;
 
-import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 
@@ -35,7 +35,7 @@ public final class LruCacheConstants {
 
     public static final String OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP = ConcurrentLinkedHashMap.class.getName();
 
-    public static final String OBJECT_CLASS_NAME_CONCURRENT_MAP = Map.class.getName();
+    public static final String OBJECT_CLASS_NAME_CONCURRENT_MAP = ConcurrentMap.class.getName();
 
     private LruCacheConstants() {
     }
