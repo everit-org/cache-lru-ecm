@@ -83,6 +83,7 @@
         <configuration>
           <instructions>
             <Import-Package>
+              org.everit.osgi.cache;version="[3.0,4)",
               *
             </Import-Package>
             <Export-Package>

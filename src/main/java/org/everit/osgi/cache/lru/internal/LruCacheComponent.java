@@ -60,7 +60,7 @@ public class LruCacheComponent<K, V> {
         cacheSR = bundleContext.registerService(
                 new String[] {
                         LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP,
-                        CacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP,
+                        LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP,
                         CacheConstants.OBJECT_CLASS_NAME_MAP },
                 cache, properties);
     }
