@@ -54,21 +54,21 @@ import aQute.bnd.annotation.headers.ProvideCapability;
 @StringAttributes({
     @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION,
         defaultValue = LruCacheConstants.DEFAULT_SERVICE_DESCRIPTION,
-        priority = LruCacheComponent.PRIORITY_01_SERVICE_DESCRIPTION,
+        priority = LruCacheComponent.P01_SERVICE_DESCRIPTION,
         label = "Service Description",
         description = "The description of this component configuration. It is used to easily "
             + "identify the service registered by this component."),
     @StringAttribute(attributeId = CacheConstants.ATTR_CACHE_DRIVER_NAME,
         defaultValue = LruCacheConstants.CACHE_DRIVER_NAME,
-        priority = LruCacheComponent.PRIORITY_02_CACHE_DRIVER_NAME, label = "Cache driver name",
+        priority = LruCacheComponent.P02_CACHE_DRIVER_NAME, label = "Cache driver name",
         description = "The name of the cache driver used in this implementation.") })
 public class LruCacheComponent<K, V> {
 
-  public static final int PRIORITY_01_SERVICE_DESCRIPTION = 1;
+  public static final int P01_SERVICE_DESCRIPTION = 1;
 
-  public static final int PRIORITY_02_CACHE_DRIVER_NAME = 2;
+  public static final int P02_CACHE_DRIVER_NAME = 2;
 
-  public static final int PRIORITY_03_CAPACITY = 3;
+  public static final int P03_CAPACITY = 3;
 
   private long capacity;
 
@@ -105,7 +105,7 @@ public class LruCacheComponent<K, V> {
   }
 
   @LongAttribute(attributeId = LruCacheConstants.PROP_CAPACITY,
-      defaultValue = LruCacheConstants.DEFAULT_CAPACITY, priority = PRIORITY_03_CAPACITY,
+      defaultValue = LruCacheConstants.DEFAULT_CAPACITY, priority = P03_CAPACITY,
       label = "Capacity", description = "The maximum number of elements stored in the cache.")
   public void setCapacity(final long capacity) {
     this.capacity = capacity;
