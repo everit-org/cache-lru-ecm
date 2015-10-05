@@ -17,6 +17,7 @@ package org.everit.cache.lru.ecm.internal;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
 import org.everit.cache.CacheConstants;
@@ -25,6 +26,7 @@ import org.everit.osgi.ecm.annotation.Activate;
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Deactivate;
+import org.everit.osgi.ecm.annotation.ManualService;
 import org.everit.osgi.ecm.annotation.attribute.LongAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
@@ -57,18 +59,13 @@ import aQute.bnd.annotation.headers.ProvideCapability;
         priority = LruCacheComponent.P01_SERVICE_DESCRIPTION,
         label = "Service Description",
         description = "The description of this component configuration. It is used to easily "
-            + "identify the service registered by this component."),
-    @StringAttribute(attributeId = CacheConstants.ATTR_CACHE_DRIVER_NAME,
-        defaultValue = LruCacheConstants.CACHE_DRIVER_NAME,
-        priority = LruCacheComponent.P02_CACHE_DRIVER_NAME, label = "Cache driver name",
-        description = "The name of the cache driver used in this implementation.") })
+            + "identify the service registered by this component.") })
+@ManualService({ Map.class, ConcurrentMap.class, ConcurrentLinkedHashMap.class })
 public class LruCacheComponent<K, V> {
 
   public static final int P01_SERVICE_DESCRIPTION = 1;
 
-  public static final int P02_CACHE_DRIVER_NAME = 2;
-
-  public static final int P03_CAPACITY = 3;
+  public static final int P02_CAPACITY = 2;
 
   private long capacity;
 
@@ -81,16 +78,15 @@ public class LruCacheComponent<K, V> {
   public void activate(final ComponentContext<LruCacheComponent<K, V>> componentContext) {
     Dictionary<String, Object> serviceProperties =
         new Hashtable<String, Object>(componentContext.getProperties());
-
     ConcurrentMap<K, V> cache = new ConcurrentLinkedHashMap.Builder<K, V>()
         .maximumWeightedCapacity(capacity)
         .build();
 
     serviceRegistration = componentContext.registerService(
         new String[] {
-            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP,
-            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP,
-            CacheConstants.OBJECT_CLASS_NAME_MAP },
+            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP.getName(),
+            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP.getName(),
+            CacheConstants.OBJECT_CLASS_NAME_MAP.getName() },
         cache, serviceProperties);
   }
 
@@ -105,7 +101,7 @@ public class LruCacheComponent<K, V> {
   }
 
   @LongAttribute(attributeId = LruCacheConstants.PROP_CAPACITY,
-      defaultValue = LruCacheConstants.DEFAULT_CAPACITY, priority = P03_CAPACITY,
+      defaultValue = LruCacheConstants.DEFAULT_CAPACITY, priority = P02_CAPACITY,
       label = "Capacity", description = "The maximum number of elements stored in the cache.")
   public void setCapacity(final long capacity) {
     this.capacity = capacity;

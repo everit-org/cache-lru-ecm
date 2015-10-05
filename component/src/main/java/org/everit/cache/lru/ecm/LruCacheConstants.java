@@ -31,10 +31,10 @@ public final class LruCacheConstants {
 
   public static final String DEFAULT_SERVICE_DESCRIPTION = "Default LRU cache";
 
-  public static final String OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP =
-      ConcurrentLinkedHashMap.class.getName();
+  public static final Class<ConcurrentLinkedHashMap> OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP =
+      ConcurrentLinkedHashMap.class;
 
-  public static final String OBJECT_CLASS_NAME_CONCURRENT_MAP = ConcurrentMap.class.getName();
+  public static final Class<ConcurrentMap> OBJECT_CLASS_NAME_CONCURRENT_MAP = ConcurrentMap.class;
 
   public static final String PROP_CAPACITY = "capacity";
 
