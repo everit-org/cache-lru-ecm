@@ -3,7 +3,7 @@ Simple LRU [cache-api][1] implementation based on a high performance ConcurrentL
 
 ## Component
 
-The module contains one Declarative Services component. The component can
+The module contains an ECM component. The component can
 be instantiated multiple times via Configuration Admin. The component
 registers three OSGi services:
  - __java.util.Map__

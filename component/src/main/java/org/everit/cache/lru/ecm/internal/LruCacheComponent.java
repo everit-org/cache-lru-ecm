@@ -84,9 +84,9 @@ public class LruCacheComponent<K, V> {
 
     serviceRegistration = componentContext.registerService(
         new String[] {
-            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_LINKED_HASH_MAP.getName(),
-            LruCacheConstants.OBJECT_CLASS_NAME_CONCURRENT_MAP.getName(),
-            CacheConstants.OBJECT_CLASS_NAME_MAP.getName() },
+            LruCacheConstants.OBJECT_CLASS_CONCURRENT_LINKED_HASH_MAP.getName(),
+            LruCacheConstants.OBJECT_CLASS_CONCURRENT_MAP.getName(),
+            CacheConstants.OBJECT_CLASS_MAP.getName() },
         cache, serviceProperties);
   }
 
