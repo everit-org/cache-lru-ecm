@@ -29,7 +29,7 @@
 
   <groupId>org.everit.cache</groupId>
   <artifactId>org.everit.cache.lru.ecm.tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <packaging>bundle</packaging>
 
