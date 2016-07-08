@@ -27,20 +27,19 @@ import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Deactivate;
 import org.everit.osgi.ecm.annotation.ManualService;
+import org.everit.osgi.ecm.annotation.ManualServices;
 import org.everit.osgi.ecm.annotation.attribute.LongAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.component.ComponentContext;
-import org.everit.osgi.ecm.extender.ECMExtenderConstants;
+import org.everit.osgi.ecm.extender.ExtendComponent;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceRegistration;
 
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 
-import aQute.bnd.annotation.headers.ProvideCapability;
-
 /**
- * ECM component for {@link CacheConstants#OBJECT_CLASS_NAME_MAP} based on
+ * ECM component for {@link LruCacheConstants#OBJECT_CLASS_CONCURRENT_LINKED_HASH_MAP} based on
  * {@link ConcurrentLinkedHashMap}.
  *
  * @param <K>
@@ -48,11 +47,11 @@ import aQute.bnd.annotation.headers.ProvideCapability;
  * @param <V>
  *          the type of mapped values
  */
+@ExtendComponent
 @Component(componentId = LruCacheConstants.SERVICE_FACTORY_PID,
     configurationPolicy = ConfigurationPolicy.FACTORY, label = "Everit LRU Cache",
-    description = "LRU cache component based on a high performance ConcurrentLinkedHashMap.")
-@ProvideCapability(ns = ECMExtenderConstants.CAPABILITY_NS_COMPONENT,
-    value = ECMExtenderConstants.CAPABILITY_ATTR_CLASS + "=${@class}")
+    description = "LRU in-memory cache component based on a high performance"
+        + " ConcurrentLinkedHashMap.")
 @StringAttributes({
     @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION,
         defaultValue = LruCacheConstants.DEFAULT_SERVICE_DESCRIPTION,
@@ -60,7 +59,7 @@ import aQute.bnd.annotation.headers.ProvideCapability;
         label = "Service Description",
         description = "The description of this component configuration. It is used to easily "
             + "identify the service registered by this component.") })
-@ManualService({ Map.class, ConcurrentMap.class, ConcurrentLinkedHashMap.class })
+@ManualServices(@ManualService({ Map.class, ConcurrentMap.class, ConcurrentLinkedHashMap.class }))
 public class LruCacheComponent<K, V> {
 
   public static final int P01_SERVICE_DESCRIPTION = 1;

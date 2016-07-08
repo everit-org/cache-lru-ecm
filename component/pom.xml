@@ -24,12 +24,12 @@
   <parent>
     <groupId>org.everit.config</groupId>
     <artifactId>org.everit.config.oss</artifactId>
-    <version>7.0.1</version>
+    <version>7.3.0</version>
   </parent>
 
   <groupId>org.everit.cache</groupId>
   <artifactId>org.everit.cache.lru.ecm</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
 
   <packaging>bundle</packaging>
 
@@ -86,8 +86,16 @@
             <Export-Package>
               org.everit.cache.lru.ecm
             </Export-Package>
+            <_plugin>org.everit.osgi.ecm.bnd.ECMBndAnalyzerPlugin</_plugin>
           </instructions>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.everit.osgi</groupId>
+            <artifactId>org.everit.osgi.ecm.annotation.bnd</artifactId>
+            <version>3.0.0</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
@@ -111,25 +119,19 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>biz.aQute.bnd</groupId>
-      <artifactId>biz.aQute.bndlib</artifactId>
-      <version>2.4.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.everit.osgi</groupId>
       <artifactId>org.everit.osgi.ecm.extender.api</artifactId>
-      <version>1.0.0</version>
+      <version>3.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.everit.osgi</groupId>
       <artifactId>org.everit.osgi.ecm.annotation</artifactId>
-      <version>2.1.0</version>
+      <version>3.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.everit.osgi</groupId>
       <artifactId>org.everit.osgi.ecm.component.api</artifactId>
-      <version>2.0.0</version>
+      <version>3.0.0</version>
     </dependency>
   </dependencies>
 
